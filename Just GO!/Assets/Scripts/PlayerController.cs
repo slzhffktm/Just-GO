@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
     private bool isGrounded;
+    private Animator playerAnimator;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = transform.GetComponent<Rigidbody2D>();
+        playerAnimator = gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -22,8 +24,11 @@ public class PlayerController : MonoBehaviour
         {
             playerRigidBody.AddForce(Vector3.up * (jumpPower * playerRigidBody.mass * playerRigidBody.gravityScale * 20.0f));
             jumpCount++;
-            
-        }        
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playerAnimator.SetTrigger("Attack");
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
