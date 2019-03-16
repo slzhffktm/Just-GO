@@ -2267,9 +2267,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2057879576}
-  jumpPower: 15
+  jumpPower: 50
   movementSpeed: 2
-  gravity: 10
+  gravity: 100
 --- !u!1 &2057879574
 GameObject:
   m_ObjectHideFlags: 0
