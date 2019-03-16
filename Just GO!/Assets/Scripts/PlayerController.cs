@@ -5,17 +5,20 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float jumpPower;
+    public float movementSpeed;
 
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
     private bool isGrounded;
     private Animator playerAnimator;
+    private Vector2 moveDirection = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = transform.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
+        MovePlayerRight();
     }
 
     void Update()
@@ -29,6 +32,14 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimator.SetTrigger("Attack");
         }
+    }
+
+    private void MovePlayerRight()
+    {
+        //CharacterController player = GetComponent<CharacterController>();
+        //moveDirection.x = movementSpeed;
+        //player.Move(moveDirection);
+        playerRigidBody.AddForce(Vector3.right * movementSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
