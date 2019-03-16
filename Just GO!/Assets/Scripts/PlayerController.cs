@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Camera playerCamera;
+
     public float jumpPower;
     public float movementSpeed;
+    public float gravity;
 
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
@@ -18,28 +21,47 @@ public class PlayerController : MonoBehaviour
     {
         playerRigidBody = transform.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
-        MovePlayerRight();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 1)
+        CharacterController controller = GetComponent<CharacterController>();
+        if (controller.isGrounded)
         {
-            playerRigidBody.AddForce(Vector3.up * (jumpPower * playerRigidBody.mass * playerRigidBody.gravityScale * 20.0f));
-            jumpCount++;
+            moveDirection = new Vector3(1, 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= movementSpeed;
+            if (Input.GetButton("Jump"))
+            {
+                moveDirection.y = jumpPower;
+            }
+            if (Input.touchCount > 0)
+            {
+                moveDirection.y = jumpPower;
+            }
+
         }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            playerAnimator.SetTrigger("Attack");
-        }
+        moveDirection.y -= gravity * Time.smoothDeltaTime;
+        controller.Move(moveDirection * Time.smoothDeltaTime);
+        //MovePlayerRight();
+        //if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 1)
+        //{
+        //    playerRigidBody.AddForce(Vector3.up * (jumpPower * playerRigidBody.mass * playerRigidBody.gravityScale * 20.0f));
+        //    jumpCount++;
+        //}
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    playerAnimator.SetTrigger("Attack");
+        //}
+        playerCamera.transform.position = new Vector3(transform.position.x + 4, transform.position.y, playerCamera.transform.position.z);
     }
 
     private void MovePlayerRight()
     {
-        //CharacterController player = GetComponent<CharacterController>();
-        //moveDirection.x = movementSpeed;
-        //player.Move(moveDirection);
-        playerRigidBody.AddForce(Vector3.right * movementSpeed);
+        CharacterController player = GetComponent<CharacterController>();
+        moveDirection.x = movementSpeed;
+        player.Move(moveDirection);
+        //playerRigidBody.AddForce(Vector3.right * movementSpeed);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
