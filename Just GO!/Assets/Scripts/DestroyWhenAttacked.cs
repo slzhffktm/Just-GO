@@ -28,7 +28,7 @@ public class DestroyWhenAttacked : MonoBehaviour
             }
             else
             {
-
+                
             }
         }
     }
