@@ -9,12 +9,13 @@ public class EnemyEagleController : MonoBehaviour
     public float movementSpeed;
     public int maxDist;
     public int minDist;
-    public Transform player;
+    private Transform player;
     private Vector2 moveDirection = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         controller = GetComponent<CharacterController>();
     }
 

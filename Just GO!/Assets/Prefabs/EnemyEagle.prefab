@@ -135,8 +135,7 @@ MonoBehaviour:
   gravity: 2
   movementSpeed: 2
   maxDist: 0
-  minDist: 12
-  player: {fileID: 0}
+  minDist: 10
 --- !u!114 &5036696763654200583
 MonoBehaviour:
   m_ObjectHideFlags: 0
