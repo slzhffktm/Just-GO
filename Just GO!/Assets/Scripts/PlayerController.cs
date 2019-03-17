@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Transform swordAttackSpawn;
     private float nextSwordAttack;
 
+    private bool hasFireball;
     public float FireballRate;
     public float FireballDuration;
     public GameObject Fireball;
@@ -27,8 +28,6 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     private CharacterController controller;
     private Vector2 moveDirection = Vector2.zero;
-
-    private bool hasFireball;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +62,7 @@ public class PlayerController : MonoBehaviour
             nextSwordAttack = Time.time + swordAttackRate;
             Attack();
         }
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time > nextFireball)
+        if (Input.GetKeyDown(KeyCode.Q) && hasFireball && Time.time > nextFireball)
         {
             nextFireball = Time.time + FireballRate;
             FireballAttack();
@@ -92,6 +91,7 @@ public class PlayerController : MonoBehaviour
         if (hit.collider.gameObject.tag == "FireballPotion")
         {
             hasFireball = true;
+            Destroy(hit.gameObject);
         }
     }
 }
