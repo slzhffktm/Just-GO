@@ -22,6 +22,12 @@ public class PlayerController : MonoBehaviour
     public Transform FireballSpawn;
     private float nextFireball;
 
+    public float UltimateRate;
+    public float UltimateDuration;
+    public GameObject Ultimate;
+    public Transform UltimateSpawn;
+    private float nextUltimate;
+
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
     private Animator playerAnimator;
@@ -69,6 +75,13 @@ public class PlayerController : MonoBehaviour
             FireballAttack();
         }
 
+        if (Input.GetKeyDown(KeyCode.E) && Time.time > nextUltimate)
+        {
+            moveDirection.y -= gravity * Time.smoothDeltaTime;
+            nextUltimate = Time.time + UltimateRate;
+            UltimateAttack();
+        }
+
         moveDirection.y -= gravity * Time.smoothDeltaTime;
         controller.Move(moveDirection * Time.smoothDeltaTime);
     }
@@ -85,6 +98,13 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetTrigger("Fireball");
         GameObject clone = Instantiate(Fireball, FireballSpawn.position, FireballSpawn.rotation);
         Destroy(clone, FireballDuration);
+    }
+
+    private void UltimateAttack()
+    {
+        playerAnimator.SetTrigger("Ultimate");
+        GameObject clone = Instantiate(Ultimate, UltimateSpawn.position, UltimateSpawn.rotation);
+        Destroy(clone, UltimateDuration);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
