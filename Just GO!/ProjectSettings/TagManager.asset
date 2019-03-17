@@ -8,6 +8,7 @@ TagManager:
   - Attack
   - Enemy
   - FireballPotion
+  - Ultimate
   layers:
   - Default
   - TransparentFX

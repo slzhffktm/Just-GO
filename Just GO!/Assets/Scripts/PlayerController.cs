@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         
-        hasFireball = false;
+        hasFireball = true;
         isUltimateCooldown = true;
     }
 

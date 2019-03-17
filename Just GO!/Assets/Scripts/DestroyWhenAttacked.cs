@@ -23,12 +23,12 @@ public class DestroyWhenAttacked : MonoBehaviour
             print(hit.collider.gameObject.tag);
             if (hit.collider.gameObject.tag == "Attack")
             {
-                print("Enemy attacked");
                 Destroy(gameObject);
+                Destroy(hit.gameObject);
             }
-            else
+            else if (hit.collider.gameObject.tag == "Ultimate")
             {
-                
+                Destroy(gameObject);
             }
         }
     }
