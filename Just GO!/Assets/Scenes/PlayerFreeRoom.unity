@@ -3951,7 +3951,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4209,6 +4209,7 @@ MonoBehaviour:
   UltimateDuration: 1.5
   Ultimate: {fileID: 133958273049206844, guid: 00ed041657f281b4aa6f81d4d6c1725b, type: 3}
   UltimateSpawn: {fileID: 1382233484}
+  imageCooldown: {fileID: 1842107627}
 --- !u!43 &2006513330
 Mesh:
   m_ObjectHideFlags: 0

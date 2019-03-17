@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,7 +28,8 @@ public class PlayerController : MonoBehaviour
     public float UltimateDuration;
     public GameObject Ultimate;
     public Transform UltimateSpawn;
-    private float nextUltimate;
+    private bool isUltimateCooldown;
+    public Image imageCooldown;
 
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         
         hasFireball = false;
+        isUltimateCooldown = true;
     }
 
     void Update()
@@ -50,6 +53,14 @@ public class PlayerController : MonoBehaviour
         if (controller.isGrounded)
         {
             jumpCount = 0;
+        }
+        if (isUltimateCooldown)
+        {
+            imageCooldown.fillAmount -= 1 / UltimateRate * Time.deltaTime;
+            if (imageCooldown.fillAmount <= 0)
+            {
+                isUltimateCooldown = false;
+            }
         }
         MovePlayer();
         playerCamera.transform.position = new Vector3(transform.position.x + 4, transform.position.y, playerCamera.transform.position.z);
@@ -73,11 +84,11 @@ public class PlayerController : MonoBehaviour
             nextFireball = Time.time + FireballRate;
             FireballAttack();
         }
-
-        if (Input.GetKeyDown(KeyCode.E) && Time.time > nextUltimate)
+        if (Input.GetKeyDown(KeyCode.E) && !isUltimateCooldown)
         {
             moveDirection.y -= gravity * Time.smoothDeltaTime;
-            nextUltimate = Time.time + UltimateRate;
+            isUltimateCooldown = true;
+            imageCooldown.fillAmount = 1;
             UltimateAttack();
         }
 
