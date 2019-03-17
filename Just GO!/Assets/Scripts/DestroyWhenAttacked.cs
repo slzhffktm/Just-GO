@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DestroyWhenAttacked : MonoBehaviour
 {
-    public EnemyOpossumController enemy;
     private CharacterController controller;
 
     private void Start()
@@ -29,7 +28,7 @@ public class DestroyWhenAttacked : MonoBehaviour
             }
             else
             {
-                enemy.movementSpeed = 0;
+                
             }
         }
     }
