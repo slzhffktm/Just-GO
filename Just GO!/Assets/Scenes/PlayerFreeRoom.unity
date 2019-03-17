@@ -2192,9 +2192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2057879576}
-  jumpPower: 50
+  jumpPower: 10
   movementSpeed: 2
-  gravity: 100
+  gravity: 20
   swordAttackRate: 0.5
   swordAttackDuration: 0.3
   swordAttack: {fileID: 6271287374097377724, guid: ad6b397a8b5440a4cac9cf383d5d402d,
