@@ -28,8 +28,9 @@ public class PlayerController : MonoBehaviour
     public float UltimateDuration;
     public GameObject Ultimate;
     public Transform UltimateSpawn;
-    private bool isUltimateCooldown;
     public Image imageCooldown;
+    private bool isUltimateCooldown;
+    private float endOfUltimate;
 
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
@@ -68,6 +69,10 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        if (Time.time > endOfUltimate)
+        {
+            movementSpeed = 2;
+        }
         moveDirection.x = movementSpeed;
         if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
@@ -91,17 +96,11 @@ public class PlayerController : MonoBehaviour
             isUltimateCooldown = true;
             imageCooldown.fillAmount = 1;
             UltimateAttack();
-            StartCoroutine(Delay());
+            endOfUltimate = Time.time + UltimateDuration;
         }
 
-        movementSpeed = 2;
         moveDirection.y -= gravity * Time.smoothDeltaTime;
         controller.Move(moveDirection * Time.smoothDeltaTime);
-    }
-
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(2);
     }
 
     private void Attack()
