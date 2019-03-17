@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -16,6 +17,21 @@ public class PlayerController : MonoBehaviour
     public Transform swordAttackSpawn;
     private float nextSwordAttack;
 
+    private bool hasFireball;
+    public float FireballRate;
+    public float FireballDuration;
+    public GameObject Fireball;
+    public Transform FireballSpawn;
+    private float nextFireball;
+
+    public float UltimateRate;
+    public float UltimateDuration;
+    public GameObject Ultimate;
+    public Transform UltimateSpawn;
+    public Image imageCooldown;
+    private bool isUltimateCooldown;
+    private float endOfUltimate;
+
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
     private Animator playerAnimator;
@@ -26,7 +42,6 @@ public class PlayerController : MonoBehaviour
     private bool attack = false;
 
     Collider mCollider;
-    private bool hasFireball;
 
     public Transform sword;
 
@@ -36,10 +51,9 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = transform.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-        mCollider = GetComponent<Collider>();
-
-        hasFireball = false;
-        //Physics.IgnoreCollision(GetComponent<Collider>(), sword.GetComponent<Collider>());
+        
+        hasFireball = true;
+        isUltimateCooldown = true;
     }
 
     void Update()
@@ -48,13 +62,24 @@ public class PlayerController : MonoBehaviour
         {
             jumpCount = 0;
         }
+        if (isUltimateCooldown)
+        {
+            imageCooldown.fillAmount -= 1 / UltimateRate * Time.deltaTime;
+            if (imageCooldown.fillAmount <= 0)
+            {
+                isUltimateCooldown = false;
+            }
+        }
         MovePlayer();
         playerCamera.transform.position = new Vector3(transform.position.x + 4, transform.position.y, playerCamera.transform.position.z);
     }
 
     private void MovePlayer()
     {
-        attack = false;
+        if (Time.time > endOfUltimate)
+        {
+            movementSpeed = 2;
+        }
         moveDirection.x = movementSpeed;
         if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
@@ -65,6 +90,20 @@ public class PlayerController : MonoBehaviour
         {
             nextSwordAttack = Time.time + swordAttackRate;
             Attack();
+        }
+        if (Input.GetKeyDown(KeyCode.Q) && hasFireball && Time.time > nextFireball)
+        {
+            nextFireball = Time.time + FireballRate;
+            FireballAttack();
+        }
+        if (Input.GetKeyDown(KeyCode.E) && !isUltimateCooldown)
+        {
+            movementSpeed = 0;
+            moveDirection.y -= gravity * Time.smoothDeltaTime;
+            isUltimateCooldown = true;
+            imageCooldown.fillAmount = 1;
+            UltimateAttack();
+            endOfUltimate = Time.time + UltimateDuration;
         }
 
         moveDirection.y -= gravity * Time.smoothDeltaTime;
@@ -78,7 +117,21 @@ public class PlayerController : MonoBehaviour
         Destroy(clone, swordAttackDuration);
     }
 
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    void FireballAttack()
+    {
+        playerAnimator.SetTrigger("Fireball");
+        GameObject clone = Instantiate(Fireball, FireballSpawn.position, FireballSpawn.rotation);
+        Destroy(clone, FireballDuration);
+    }
+
+    private void UltimateAttack()
+    {
+        playerAnimator.SetTrigger("Ultimate");
+        GameObject clone = Instantiate(Ultimate, UltimateSpawn.position, UltimateSpawn.rotation);
+        Destroy(clone, UltimateDuration);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.collider.tag == "Enemy")
         {
