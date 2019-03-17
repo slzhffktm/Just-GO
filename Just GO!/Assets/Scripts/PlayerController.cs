@@ -22,12 +22,16 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector2 moveDirection = Vector2.zero;
 
+    private bool hasFireball;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = transform.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+
+        hasFireball = false;
     }
 
     void Update()
@@ -63,5 +67,13 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetTrigger("Attack");
         GameObject clone = Instantiate(swordAttack, swordAttackSpawn.position, swordAttackSpawn.rotation);
         Destroy(clone, swordAttackDuration);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.gameObject.tag == "FireballPotion")
+        {
+            hasFireball = true;
+        }
     }
 }
