@@ -83,22 +83,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetTrigger("Die");
             movementSpeed = 0;
         }
-        
-        //// NOTE: bitwise NOT is the tild character: ~
-        //CollisionFlags ignoreGround = ~CollisionFlags.Below;
 
-        //CollisionFlags newCollisionFlags = controller.collisionFlags & ignoreGround;
-
-        //if (newCollisionFlags != 0)
-        //{
-        //    print("touched something OTHER than the ground");
-        //    playerAnimator.SetTrigger("Die");
-        //    movementSpeed = 0;
-        //}
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
         if (hit.collider.gameObject.tag == "FireballPotion")
         {
             hasFireball = true;
