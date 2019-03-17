@@ -114,12 +114,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 0.40999997
-  m_Radius: 0.16
+  m_Radius: 0.13
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: -0.04, y: 0, z: 0}
+  m_Center: {x: -0.04, y: 0.03, z: 0}
 --- !u!114 &5036696763654200576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,9 +133,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: 2
-  movementSpeed: 2
+  movementSpeed: 1.29
   maxDist: 0
-  minDist: 10
+  minDist: 13
 --- !u!114 &5036696763654200583
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
     Collider mCollider;
     private bool hasFireball;
 
+    public Transform sword;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         mCollider = GetComponent<Collider>();
 
         hasFireball = false;
+        //Physics.IgnoreCollision(GetComponent<Collider>(), sword.GetComponent<Collider>());
     }
 
     void Update()

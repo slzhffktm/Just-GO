@@ -13,23 +13,10 @@ public class DestroyWhenAttacked : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        // NOTE: bitwise NOT is the tild character: ~
-        CollisionFlags ignoreGround = ~CollisionFlags.Below;
-
-        CollisionFlags newCollisionFlags = controller.collisionFlags & ignoreGround;
-
-        if (newCollisionFlags != 0)
+        if (hit.collider.gameObject.tag == "Attack")
         {
-            print(hit.collider.gameObject.tag);
-            if (hit.collider.gameObject.tag == "Attack")
-            {
-                print("Enemy attacked");
-                Destroy(gameObject);
-            }
-            else
-            {
-                
-            }
+            print("Enemy attacked");
+            Destroy(gameObject);
         }
     }
 }
