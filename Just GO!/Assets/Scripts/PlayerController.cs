@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed;
     public float gravity;
 
+    public float swordAttackRate;
+    public float swordAttackDuration;
+    public GameObject swordAttack;
+    public Transform swordAttackSpawn;
+    private float nextSwordAttack;
+
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
     private Animator playerAnimator;
@@ -52,8 +58,9 @@ public class PlayerController : MonoBehaviour
             moveDirection.y = jumpPower;
             jumpCount++;
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextSwordAttack)
         {
+            nextSwordAttack = Time.time + swordAttackRate;
             Attack();
         }
 
@@ -64,7 +71,8 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         playerAnimator.SetTrigger("Attack");
-        attack = true;
+        GameObject clone = Instantiate(swordAttack, swordAttackSpawn.position, swordAttackSpawn.rotation);
+        Destroy(clone, swordAttackDuration);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
