@@ -868,6 +868,7 @@ GameObject:
   - component: {fileID: 734658035}
   - component: {fileID: 734658034}
   - component: {fileID: 734658033}
+  - component: {fileID: 734658038}
   m_Layer: 0
   m_Name: EnemyOpossum
   m_TagString: Untagged
@@ -991,6 +992,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.009000001}
+--- !u!114 &734658038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 734658032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bdd3c628ef96a4bb670cb068905be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &775807462
 GameObject:
   m_ObjectHideFlags: 0
@@ -2403,7 +2416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 2057879576}
-  jumpPower: 50
+  jumpPower: 20
   movementSpeed: 2
   gravity: 100
 --- !u!1 &2057879574
