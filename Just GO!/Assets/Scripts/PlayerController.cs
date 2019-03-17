@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         playerRigidBody = transform.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-
+        
         hasFireball = false;
     }
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void MovePlayer()
-    {
+    {;
         moveDirection.x = movementSpeed;
         if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
@@ -88,6 +88,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (hit.collider.tag == "Enemy")
+        {
+            print("touched something OTHER than the ground");
+            playerAnimator.SetTrigger("Die");
+            movementSpeed = 0;
+        }
+
         if (hit.collider.gameObject.tag == "FireballPotion")
         {
             hasFireball = true;
