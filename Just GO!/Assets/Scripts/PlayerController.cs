@@ -67,7 +67,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void MovePlayer()
-    {;
+    {
         moveDirection.x = movementSpeed;
         if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
@@ -86,14 +86,22 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E) && !isUltimateCooldown)
         {
+            movementSpeed = 0;
             moveDirection.y -= gravity * Time.smoothDeltaTime;
             isUltimateCooldown = true;
             imageCooldown.fillAmount = 1;
             UltimateAttack();
+            StartCoroutine(Delay());
         }
 
+        movementSpeed = 2;
         moveDirection.y -= gravity * Time.smoothDeltaTime;
         controller.Move(moveDirection * Time.smoothDeltaTime);
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(2);
     }
 
     private void Attack()
