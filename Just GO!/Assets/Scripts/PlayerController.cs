@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool attack = false;
 
     Collider mCollider;
+    private bool hasFireball;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         mCollider = GetComponent<Collider>();
+
+        hasFireball = false;
     }
 
     void Update()
@@ -92,5 +95,13 @@ public class PlayerController : MonoBehaviour
         //    playerAnimator.SetTrigger("Die");
         //    movementSpeed = 0;
         //}
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.gameObject.tag == "FireballPotion")
+        {
+            hasFireball = true;
+        }
     }
 }
