@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     public Transform swordAttackSpawn;
     private float nextSwordAttack;
 
+    public float FireballRate;
+    public float FireballDuration;
+    public GameObject Fireball;
+    public Transform FireballSpawn;
+    private float nextFireball;
+
     private Rigidbody2D playerRigidBody;
     private int jumpCount = 0;
     private Animator playerAnimator;
@@ -57,6 +63,11 @@ public class PlayerController : MonoBehaviour
             nextSwordAttack = Time.time + swordAttackRate;
             Attack();
         }
+        if (Input.GetKeyDown(KeyCode.Q) && Time.time > nextFireball)
+        {
+            nextFireball = Time.time + FireballRate;
+            FireballAttack();
+        }
 
         moveDirection.y -= gravity * Time.smoothDeltaTime;
         controller.Move(moveDirection * Time.smoothDeltaTime);
@@ -67,6 +78,13 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetTrigger("Attack");
         GameObject clone = Instantiate(swordAttack, swordAttackSpawn.position, swordAttackSpawn.rotation);
         Destroy(clone, swordAttackDuration);
+    }
+
+    private void FireballAttack()
+    {
+        playerAnimator.SetTrigger("Fireball");
+        GameObject clone = Instantiate(Fireball, FireballSpawn.position, FireballSpawn.rotation);
+        Destroy(clone, FireballDuration);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
