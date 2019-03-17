@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2753549531330302989}
   m_Layer: 0
   m_Name: FireballPotion
-  m_TagString: Untagged
+  m_TagString: FireballPotion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
