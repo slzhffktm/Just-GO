@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDirection = Vector2.zero;
 
     private bool life = true;
+    private bool attack = false;
 
     Collider mCollider;
 
@@ -44,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
+        attack = false;
         moveDirection.x = movementSpeed;
         if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
@@ -62,6 +64,7 @@ public class PlayerController : MonoBehaviour
     private void Attack()
     {
         playerAnimator.SetTrigger("Attack");
+        attack = true;
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
@@ -73,12 +76,17 @@ public class PlayerController : MonoBehaviour
 
         if (newCollisionFlags != 0)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Destroy(hit.collider.gameObject);
-            }
-            Destroy(gameObject);
             print("touched something OTHER than the ground");
+            if (attack)
+            {
+                print("here");
+                print(hit.collider.gameObject.tag);
+                Destroy(hit.collider.gameObject);
+                
+            } else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
