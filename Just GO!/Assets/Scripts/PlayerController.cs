@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public Transform swordAttackSpawn;
     private float nextSwordAttack;
 
+    private bool hasFireball;
     public float FireballRate;
     public float FireballDuration;
     public GameObject Fireball;
@@ -34,15 +35,13 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector2 moveDirection = Vector2.zero;
 
-    private bool hasFireball;
-
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = transform.GetComponent<Rigidbody2D>();
         playerAnimator = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
-
+        
         hasFireball = false;
     }
 
@@ -57,7 +56,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void MovePlayer()
-    {
+    {;
         moveDirection.x = movementSpeed;
         if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
@@ -69,7 +68,7 @@ public class PlayerController : MonoBehaviour
             nextSwordAttack = Time.time + swordAttackRate;
             Attack();
         }
-        if (Input.GetKeyDown(KeyCode.Q) && Time.time > nextFireball)
+        if (Input.GetKeyDown(KeyCode.Q) && hasFireball && Time.time > nextFireball)
         {
             nextFireball = Time.time + FireballRate;
             FireballAttack();
@@ -109,9 +108,17 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        if (hit.collider.tag == "Enemy")
+        {
+            print("touched something OTHER than the ground");
+            playerAnimator.SetTrigger("Die");
+            movementSpeed = 0;
+        }
+
         if (hit.collider.gameObject.tag == "FireballPotion")
         {
             hasFireball = true;
+            Destroy(hit.gameObject);
         }
     }
 }
