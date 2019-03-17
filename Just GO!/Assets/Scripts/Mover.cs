@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    public Transform target;
-    public GameObject GameObject;
+    public Rigidbody rb;
     public float speed;
 
-    void Update()
+    private void Start()
     {
-        float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+        rb = GetComponent<Rigidbody>();
+
+        rb.velocity = transform.right * speed;
     }
 }
+

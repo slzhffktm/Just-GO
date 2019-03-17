@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         
-        hasFireball = false;
+        hasFireball = true;
     }
 
     void Update()
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void MovePlayer()
-    {;
+    {
         moveDirection.x = movementSpeed;
         if (Input.GetKeyDown(KeyCode.UpArrow) && jumpCount < 2)
         {
@@ -76,13 +76,21 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && Time.time > nextUltimate)
         {
+            movementSpeed = 0;
             moveDirection.y -= gravity * Time.smoothDeltaTime;
             nextUltimate = Time.time + UltimateRate;
             UltimateAttack();
+            StartCoroutine(Delay());
         }
 
+        movementSpeed = 2;
         moveDirection.y -= gravity * Time.smoothDeltaTime;
         controller.Move(moveDirection * Time.smoothDeltaTime);
+    }
+
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(2);
     }
 
     private void Attack()
