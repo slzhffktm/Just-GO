@@ -4,14 +4,32 @@ using UnityEngine;
 
 public class DestroyWhenAttacked : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private CharacterController controller;
+
+    private void Start()
     {
-        if (collision.gameObject.tag == "Attack")
+        controller = GetComponent<CharacterController>();
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        // NOTE: bitwise NOT is the tild character: ~
+        CollisionFlags ignoreGround = ~CollisionFlags.Below;
+
+        CollisionFlags newCollisionFlags = controller.collisionFlags & ignoreGround;
+
+        if (newCollisionFlags != 0)
         {
-            Destroy(gameObject);
-        } else
-        {
-            Destroy(collision.gameObject);
+            print(hit.collider.gameObject.tag);
+            if (hit.collider.gameObject.tag == "Attack")
+            {
+                print("Enemy attacked");
+                Destroy(gameObject);
+            }
+            else
+            {
+                
+            }
         }
     }
 }

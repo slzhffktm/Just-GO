@@ -38,15 +38,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (true)
+        if (controller.isGrounded)
         {
-            if (controller.isGrounded)
-            {
-                jumpCount = 0;
-            }
-            MovePlayer();
-            playerCamera.transform.position = new Vector3(transform.position.x + 4, transform.position.y, playerCamera.transform.position.z);
+            jumpCount = 0;
         }
+        MovePlayer();
+        playerCamera.transform.position = new Vector3(transform.position.x + 4, transform.position.y, playerCamera.transform.position.z);
     }
 
     private void MovePlayer()
@@ -72,29 +69,28 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator.SetTrigger("Attack");
         GameObject clone = Instantiate(swordAttack, swordAttackSpawn.position, swordAttackSpawn.rotation);
-        Destroy(clone, swordAttackDuration);
+        //Destroy(clone, swordAttackDuration);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        // NOTE: bitwise NOT is the tild character: ~
-        CollisionFlags ignoreGround = ~CollisionFlags.Below;
-
-        CollisionFlags newCollisionFlags = controller.collisionFlags & ignoreGround;
-
-        if (newCollisionFlags != 0)
+        if (hit.collider.tag == "Enemy")
         {
             print("touched something OTHER than the ground");
-            if (attack)
-            {
-                print("here");
-                print(hit.collider.gameObject.tag);
-                Destroy(hit.collider.gameObject);
-                
-            } else
-            {
-                Destroy(gameObject);
-            }
+            playerAnimator.SetTrigger("Die");
+            movementSpeed = 0;
         }
+        
+        //// NOTE: bitwise NOT is the tild character: ~
+        //CollisionFlags ignoreGround = ~CollisionFlags.Below;
+
+        //CollisionFlags newCollisionFlags = controller.collisionFlags & ignoreGround;
+
+        //if (newCollisionFlags != 0)
+        //{
+        //    print("touched something OTHER than the ground");
+        //    playerAnimator.SetTrigger("Die");
+        //    movementSpeed = 0;
+        //}
     }
 }

@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 65484982}
   m_Layer: 0
   m_Name: SwordAttackSpawn
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 734658038}
   m_Layer: 0
   m_Name: EnemyOpossum
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -910,11 +910,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 734658032}
   m_LocalRotation: {x: -0, y: -0, z: 0.00007614749, w: 1}
-  m_LocalPosition: {x: 3.87, y: 2.4, z: 0}
-  m_LocalScale: {x: 2.8439126, y: 2.7969055, z: 0.78344697}
+  m_LocalPosition: {x: 4.255, y: 2.694, z: 0}
+  m_LocalScale: {x: 4.9815426, y: 4.899203, z: 1.3723258}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.009000001}
 --- !u!114 &734658038
 MonoBehaviour:
@@ -2223,7 +2223,7 @@ GameObject:
   - component: {fileID: 1943437169}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
