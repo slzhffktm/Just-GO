@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator.SetTrigger("Attack");
         GameObject clone = Instantiate(swordAttack, swordAttackSpawn.position, swordAttackSpawn.rotation);
-        //Destroy(clone, swordAttackDuration);
+        Destroy(clone, swordAttackDuration);
     }
 
     void OnControllerColliderHit(ControllerColliderHit hit)
