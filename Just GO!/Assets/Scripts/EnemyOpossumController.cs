@@ -8,10 +8,13 @@ public class EnemyOpossumController : MonoBehaviour
     private Animator enemyAnimator;
     private CharacterController controller;
     private Rigidbody2D enemyRigidBody;
-    public int moveSpeed;
+
+    public float gravity;
     public float movementSpeed;
     public int maxDist;
     public int minDist;
+
+    private Vector2 moveDirection = Vector2.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -24,20 +27,23 @@ public class EnemyOpossumController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player);
-        if (Vector3.Distance(transform.position, player.position) >= minDist)
-        {
-            controller.position += controller.forward * moveSpeed * Time.deltaTime;
-
-            if (Vector3.Distance(transform.position, player.position) <= maxDist)
-            {
-                // Shoot or something
-            }
-        }
+        MoveEnemy();
     }
 
     private void MoveEnemy()
     {
+        moveDirection.x = -movementSpeed;
+        //transform.LookAt(player);
+        //if (Vector3.Distance(transform.position, player.position) >= minDist)
+        //{
+        //    transform.position += transform.forward * moveSpeed * Time.deltaTime;
 
+        //    if (Vector3.Distance(transform.position, player.position) <= maxDist)
+        //    {
+        //        // Shoot or something
+        //    }
+        //}
+        moveDirection.y -= gravity * Time.smoothDeltaTime;
+        controller.Move(moveDirection * Time.smoothDeltaTime);
     }
 }
