@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerAttackAnimation
+  m_Name: FireballAttack
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -40,15 +40,6 @@ AnimationClip:
         outWeight: 0
       - serializedVersion: 3
         time: 0.25
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -60,23 +51,17 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: SwordAttackSpawn
+    path: FireballSpawn
     classID: 82
     script: {fileID: 0}
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 192eccda280e2ec4c99be851889e09ed, type: 3}
+      value: {fileID: 21300000, guid: b97711f6951c24245aed6bfb9608d230, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: 97c6ebd3ca4f107448b3b2d9b16e5d6d, type: 3}
+      value: {fileID: 21300000, guid: e0ee6519b33fbfb408dffd97edee7ebd, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: 0ffdf19da652afe48a12609e61ed7b94, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: a1b4b1f3ee0e4664aada556dbd4c246d, type: 3}
-    - time: 0.33333334
-      value: {fileID: 21300000, guid: 2d634060b61eb214a949fcd4b88122d9, type: 3}
-    - time: 0.41666666
-      value: {fileID: 21300000, guid: 0c673844191288945b65f8f4ea934f2f, type: 3}
+      value: {fileID: 21300000, guid: bae9f6e834f890746bd2c9c7544c4b75, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -89,7 +74,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 2905090108
+      path: 4236152098
       attribute: 3305885265
       script: {fileID: 0}
       typeID: 82
@@ -103,18 +88,15 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 192eccda280e2ec4c99be851889e09ed, type: 3}
-    - {fileID: 21300000, guid: 97c6ebd3ca4f107448b3b2d9b16e5d6d, type: 3}
-    - {fileID: 21300000, guid: 0ffdf19da652afe48a12609e61ed7b94, type: 3}
-    - {fileID: 21300000, guid: a1b4b1f3ee0e4664aada556dbd4c246d, type: 3}
-    - {fileID: 21300000, guid: 2d634060b61eb214a949fcd4b88122d9, type: 3}
-    - {fileID: 21300000, guid: 0c673844191288945b65f8f4ea934f2f, type: 3}
+    - {fileID: 21300000, guid: b97711f6951c24245aed6bfb9608d230, type: 3}
+    - {fileID: 21300000, guid: e0ee6519b33fbfb408dffd97edee7ebd, type: 3}
+    - {fileID: 21300000, guid: bae9f6e834f890746bd2c9c7544c4b75, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -153,15 +135,6 @@ AnimationClip:
         outWeight: 0
       - serializedVersion: 3
         time: 0.25
-        value: 1
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.5
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -173,7 +146,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Enabled
-    path: SwordAttackSpawn
+    path: FireballSpawn
     classID: 82
     script: {fileID: 0}
   m_EulerEditorCurves: []
