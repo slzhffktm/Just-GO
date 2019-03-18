@@ -37,12 +37,7 @@ public class PlayerController : MonoBehaviour
     private Animator playerAnimator;
     private CharacterController controller;
     private Vector2 moveDirection = Vector2.zero;
-
-    private bool life = true;
-    private bool attack = false;
-
-    Collider mCollider;
-
+    
     public Transform sword;
 
     // Start is called before the first frame update
@@ -52,7 +47,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator = gameObject.GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
         
-        hasFireball = true;
+        hasFireball = false;
         isUltimateCooldown = true;
     }
 
@@ -143,6 +138,7 @@ public class PlayerController : MonoBehaviour
         if (hit.collider.gameObject.tag == "FireballPotion")
         {
             hasFireball = true;
+            Destroy(hit.gameObject);
         }
     }
 }

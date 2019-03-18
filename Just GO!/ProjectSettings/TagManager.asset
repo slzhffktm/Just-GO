@@ -5,10 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-  - Attack
   - Enemy
   - FireballPotion
   - Ultimate
+  - Sword
+  - Fireball
   layers:
   - Default
   - TransparentFX

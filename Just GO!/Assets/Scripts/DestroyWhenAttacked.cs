@@ -13,18 +13,23 @@ public class DestroyWhenAttacked : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.collider.gameObject.tag == "Attack")
+        
+        if (hit.collider.gameObject.tag == "Sword")
         {
             print(hit.collider.gameObject.tag);
-            if (hit.collider.gameObject.tag == "Attack")
-            {
-                Destroy(gameObject);
-                Destroy(hit.gameObject);
-            }
-            else if (hit.collider.gameObject.tag == "Ultimate")
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
+        else if (hit.collider.gameObject.tag == "Fireball")
+        {
+            print(hit.collider.gameObject.tag);
+            Destroy(gameObject);
+            Destroy(hit.gameObject);
+        }
+        else if (hit.collider.gameObject.tag == "Ultimate")
+        {
+            print(hit.collider.gameObject.tag);
+            Destroy(gameObject);
+        }
+        
     }
 }
