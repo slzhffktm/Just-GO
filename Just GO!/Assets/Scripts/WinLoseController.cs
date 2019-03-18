@@ -47,11 +47,15 @@ public class WinLoseController : MonoBehaviour
         int unlockedLevel = GetUnlockedLevel();
 
         print(currentLevel);
+        print(unlockedLevel);
+        print("lala" + playerId);
 
-        if (currentLevel == unlockedLevel)
+        if (currentLevel >= unlockedLevel)
         {
             UpdateLevelUnlocked(currentLevel + 1);
         }
+
+        SceneManager.LoadScene(1);
     }
 
     void IsLose()
@@ -63,6 +67,7 @@ public class WinLoseController : MonoBehaviour
     {
         using (var conn = new SqliteConnection(dbPath))
         {
+            print("lalaa");
             conn.Open();
             using (var cmd = conn.CreateCommand())
             {
@@ -84,15 +89,6 @@ public class WinLoseController : MonoBehaviour
                 Debug.Log("create schema: " + result);
             }
         }
-
-        StartCoroutine(Wait());
-
-        SceneManager.LoadScene(1);
-    }
-
-    IEnumerator Wait()
-    {
-        yield return new WaitForSeconds(2f);
     }
 
     int GetUnlockedLevel()
@@ -116,7 +112,7 @@ public class WinLoseController : MonoBehaviour
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    level = reader.GetInt32(0);
+                    level = reader.GetInt32(1);
                 }
             }
         }
