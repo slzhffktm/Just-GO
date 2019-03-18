@@ -388,7 +388,7 @@ MonoBehaviour:
   Fireball: {fileID: 3711566643520217644, guid: 01638b81a375eee4295346c2b5e5f2c4,
     type: 3}
   FireballSpawn: {fileID: 235167278800866357}
-  UltimateRate: 1
+  UltimateRate: 15
   UltimateDuration: 1
   Ultimate: {fileID: 133958273049206844, guid: 00ed041657f281b4aa6f81d4d6c1725b, type: 3}
   UltimateSpawn: {fileID: 235167279194388563}
