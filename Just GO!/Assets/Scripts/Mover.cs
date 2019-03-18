@@ -43,7 +43,11 @@ public class Mover : MonoBehaviour
             transform.rotation = lastRotation;
             rb.velocity = lastVelocity;
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+        } else if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
         }
+
     }
 }
 

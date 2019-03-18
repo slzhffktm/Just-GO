@@ -13,7 +13,7 @@ public class BossController : MonoBehaviour
     public float attackWait;
     public float blastWait;
 
-    private int life = 100;
+    public int life = 100;
 
     public float minDist;
     public float touched;
@@ -80,7 +80,7 @@ public class BossController : MonoBehaviour
         {
             MoveToOrigin();
             yield return new WaitForSeconds(4);
-            if (Time.time > nextBlast)
+            if (Time.time > nextBlast && transform.position.x - player.position.x >=8 )
             {
                 AttackBeam();
                 nextBlast = Time.time + blastWait;
@@ -117,6 +117,10 @@ public class BossController : MonoBehaviour
         Debug.Log(hit.collider.gameObject.tag);
         if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Sword" || hit.collider.gameObject.tag == "Fireball" || hit.collider.gameObject.tag == "Ultimate")
         {
+            if (hit.collider.gameObject.tag == "Ultimate")
+            {
+                Physics.IgnoreCollision(controller, hit.collider);
+            }
             fallBack = true;
             life -= AttackedScore(hit);
         } else
@@ -135,11 +139,11 @@ public class BossController : MonoBehaviour
         } else if (hit.collider.gameObject.tag == "Fireball")
         {
             Destroy(hit.collider.gameObject);
-            minusHP = 5;
+            minusHP = 20;
         } else if (hit.collider.gameObject.tag == "Ultimate")
         {
             Destroy(hit.collider.gameObject);
-            minusHP = 20;
+            minusHP = 50;
         }
 
         return minusHP;
