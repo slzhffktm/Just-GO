@@ -34,7 +34,7 @@ public class BlastMover : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log(collision.gameObject.tag);
-        if (collision.gameObject.tag == "Sword" || collision.gameObject.tag == "Fireball" || collision.gameObject.tag == "Ultimate" || collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Sword" || collision.gameObject.tag == "Ground" || collision.gameObject.tag == "Fireball" || collision.gameObject.tag == "Ultimate" || collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
         }
