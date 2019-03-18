@@ -41,11 +41,11 @@ public class BossController : MonoBehaviour
         print(life);
         if (life > 0 )
         {
-            bossHealthText.text = life.ToString();
+            bossHealthText.text = "Boss life: " + life.ToString();
         } else
         {
             life = 0;
-            bossHealthText.text = life.ToString();
+            bossHealthText.text = "Boss life: " + life.ToString();
         }
         if (life > 0)
         {
