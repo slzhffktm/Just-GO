@@ -43,12 +43,17 @@ namespace TMPro {
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "INSERT INTO profiles (id, level) " +
-                                      "VALUES (@Id, 1);";
+                                      "VALUES (@Id, @Level);";
                     
                     cmd.Parameters.Add(new SqliteParameter
                     {
                         ParameterName = "Id",
                         Value = buttonId
+                    });
+                    cmd.Parameters.Add(new SqliteParameter
+                    {
+                        ParameterName = "Level",
+                        Value = 1
                     });
 
                     var result = cmd.ExecuteNonQuery();
@@ -86,7 +91,8 @@ namespace TMPro {
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var level = reader.GetInt32(0);
+                        var id = reader.GetInt32(0);
+                        var level = reader.GetInt32(1);
                         text = string.Format("{0}: Level {1}", buttonId, level);
                         Debug.Log(text);
                     }

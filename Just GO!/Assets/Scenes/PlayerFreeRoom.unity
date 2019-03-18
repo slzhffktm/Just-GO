@@ -7147,15 +7147,9 @@ PrefabInstance:
       propertyPath: imageCooldown
       value: 
       objectReference: {fileID: 1842107627}
-    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
-        type: 3}
-      propertyPath: UltimateDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
-        type: 3}
-      propertyPath: UltimateRate
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 651292512, guid: de91aa1026cec424d8444081ea82921e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 38838f240acccb64686a57f897b19f6d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de91aa1026cec424d8444081ea82921e, type: 3}
