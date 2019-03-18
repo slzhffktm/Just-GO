@@ -467,6 +467,31 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2752212376922993619, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_text
+      value: Empty
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752212376922993619, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752212376922993619, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752212376922993619, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2752212376922993619, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4124574634943557238, guid: c50d38c6e2596d248905248228494a91,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -507,6 +532,16 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4124574635464633739, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_text
+      value: Empty
+      objectReference: {fileID: 0}
+    - target: {fileID: 4124574635464633739, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5241246676632484090, guid: c50d38c6e2596d248905248228494a91,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -546,6 +581,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241246677187246855, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_text
+      value: Empty
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241246677187246855, guid: c50d38c6e2596d248905248228494a91,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8820706356501752049, guid: c50d38c6e2596d248905248228494a91,
         type: 3}
