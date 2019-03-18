@@ -1097,10 +1097,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2012e0b06715cc47933c4322647666f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surviveTime: 0
   player: {fileID: 1943437171}
   boss: {fileID: 1860076040}
-  timePassed: {fileID: 0}
 --- !u!1 &1031201541
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,7 +1111,7 @@ GameObject:
   - component: {fileID: 1031201542}
   m_Layer: 0
   m_Name: Endless 2D Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2892,6 +2890,47 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.54
       objectReference: {fileID: 0}
+    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
+        type: 3}
+      propertyPath: bossHealthText
+      value: 
+      objectReference: {fileID: 1705724237}
+    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
+        type: 3}
+      propertyPath: BlastSpawn
+      value: 
+      objectReference: {fileID: 1299568427}
+    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
+        type: 3}
+      propertyPath: Blast
+      value: 
+      objectReference: {fileID: 8205098247646618249, guid: 0304ab9a41cd7f344a1f79041a74663e,
+        type: 3}
+    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
+        type: 3}
+      propertyPath: gravity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
+        type: 3}
+      propertyPath: attackWait
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
+        type: 3}
+      propertyPath: blastWait
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
+        type: 3}
+      propertyPath: minDist
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 1833812789765804250, guid: 971e273c054d7354b84561be8998a7cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2946,47 +2985,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
-        type: 3}
-      propertyPath: bossHealthText
-      value: 
-      objectReference: {fileID: 1705724237}
-    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
-        type: 3}
-      propertyPath: BlastSpawn
-      value: 
-      objectReference: {fileID: 1299568427}
-    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
-        type: 3}
-      propertyPath: Blast
-      value: 
-      objectReference: {fileID: 8205098247646618249, guid: 0304ab9a41cd7f344a1f79041a74663e,
-        type: 3}
-    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
-        type: 3}
-      propertyPath: gravity
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
-        type: 3}
-      propertyPath: movementSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
-        type: 3}
-      propertyPath: attackWait
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
-        type: 3}
-      propertyPath: blastWait
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833812789765804251, guid: 971e273c054d7354b84561be8998a7cb,
-        type: 3}
-      propertyPath: minDist
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1833812789765804248, guid: 971e273c054d7354b84561be8998a7cb,
         type: 3}
