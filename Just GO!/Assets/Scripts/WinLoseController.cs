@@ -2,17 +2,42 @@
 using Mono.Data.Sqlite;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinLoseController : MonoBehaviour
 {
     private string dbPath;
     private int playerId;
 
+    private float startTime;
+    public float surviveTime;
+    private float elapsedTime;
+    public PlayerController player;
+
+    public Text timePassed;
+
     // Start is called before the first frame update
     void Start()
     {
+        startTime = Time.time;
         dbPath = "URI=file:" + Application.persistentDataPath + "/playerDatabase.db";
         playerId = PlayerPrefs.GetInt("id");
+    }
+
+    private void Update()
+    {
+        elapsedTime = Time.time - startTime;
+        timePassed.text = (elapsedTime).ToString();
+        if (player.alive == false)
+        {
+            IsLose();
+        }
+        if (elapsedTime >= surviveTime)
+        {
+            IsWin();
+            player.movementSpeed = 0;
+            player.isWin = true;
+        }
     }
 
     void IsWin()
@@ -20,6 +45,8 @@ public class WinLoseController : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         int currentLevel = int.Parse(currentScene.name[currentScene.name.Length - 1].ToString());
         int unlockedLevel = GetUnlockedLevel();
+
+        print(currentLevel);
 
         if (currentLevel == unlockedLevel)
         {
