@@ -26,6 +26,7 @@ namespace TMPro {
             if (buttonText.text == "Empty")
             {
                 InsertNewProfile();
+                LoadProfile();
             }
             else
             {
@@ -41,13 +42,18 @@ namespace TMPro {
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandType = CommandType.Text;
-                    cmd.CommandText = "INSERT INTO profiles (level) " +
-                                      "VALUES (1) (id) VALUES (@Id);";
+                    cmd.CommandText = "INSERT INTO profiles (id, level) " +
+                                      "VALUES (@Id, @Level);";
                     
                     cmd.Parameters.Add(new SqliteParameter
                     {
                         ParameterName = "Id",
                         Value = buttonId
+                    });
+                    cmd.Parameters.Add(new SqliteParameter
+                    {
+                        ParameterName = "Level",
+                        Value = 1
                     });
 
                     var result = cmd.ExecuteNonQuery();
@@ -85,7 +91,8 @@ namespace TMPro {
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        var level = reader.GetInt32(0);
+                        var id = reader.GetInt32(0);
+                        var level = reader.GetInt32(1);
                         text = string.Format("{0}: Level {1}", buttonId, level);
                         Debug.Log(text);
                     }

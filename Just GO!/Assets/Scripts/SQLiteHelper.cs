@@ -21,7 +21,7 @@ public class SQLiteHelper : MonoBehaviour
             {
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "CREATE TABLE IF NOT EXISTS 'profiles' ( " +
-                                  "  'id' INTEGER PRIMARY KEY, " +
+                                  "  'id' INTEGER NOT NULL, " +
                                   "  'level' INTEGER NOT NULL" +
                                   ");";
 
