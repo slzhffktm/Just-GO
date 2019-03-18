@@ -131,9 +131,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
+        print(hit.collider.gameObject.tag);
         if (!isWin)
         {
-            if (hit.collider.tag == "Enemy")
+            if (hit.collider.gameObject.tag == "Enemy")
             {
                 print("touched something OTHER than the ground");
                 playerAnimator.SetTrigger("Die");

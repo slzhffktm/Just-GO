@@ -26,7 +26,7 @@ public class Mover : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         print("kena sesuatu");
-        if (hit.collider.gameObject.tag == "FireballPotion")
+        if (hit.collider.gameObject.tag == "FireballPotion" || hit.collider.gameObject.tag == "Ultimate")
         {
             print("kena potion");
             Physics.IgnoreCollision(GetComponent<Collider>(), hit.collider);

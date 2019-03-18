@@ -8,29 +8,28 @@ public class WinLoseController : MonoBehaviour
 {
     private string dbPath;
     private int playerId;
-
-    private float startTime;
+    
     public float surviveTime;
-    private float elapsedTime;
+    private float elapsedTime = 0;
     public PlayerController player;
 
     public Text timePassed;
 
     // Start is called before the first frame update
     void Start()
-    {
-        startTime = Time.time;
+    { 
         dbPath = "URI=file:" + Application.persistentDataPath + "/playerDatabase.db";
         playerId = PlayerPrefs.GetInt("id");
     }
 
     private void Update()
     {
-        elapsedTime = Time.time - startTime;
+        elapsedTime += Time.deltaTime;
         timePassed.text = (elapsedTime).ToString();
         if (player.alive == false)
         {
             IsLose();
+            player.isWin = false;
         }
         if (elapsedTime >= surviveTime)
         {

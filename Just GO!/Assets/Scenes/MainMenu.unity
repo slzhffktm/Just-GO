@@ -178,18 +178,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &587380867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1812620418888571517, guid: b1df6d2454a4afa47b8738cced47b2f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1241954110}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a11f3f0075e7c34f9a7f31972cb24ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &825660051
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,6 +260,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1148227282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 781896009900934304, guid: b1df6d2454a4afa47b8738cced47b2f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1241954110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a11f3f0075e7c34f9a7f31972cb24ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1183130652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4914281460122613642, guid: b1df6d2454a4afa47b8738cced47b2f0,
@@ -301,6 +301,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Main Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914281460122613642, guid: b1df6d2454a4afa47b8738cced47b2f0,
+        type: 3}
+      propertyPath: m_Name
+      value: Level1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4914281460122613642, guid: b1df6d2454a4afa47b8738cced47b2f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1239506030535400514, guid: b1df6d2454a4afa47b8738cced47b2f0,
         type: 3}
@@ -441,7 +451,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 587380867}
+      objectReference: {fileID: 1148227282}
     - target: {fileID: 7482464682072041950, guid: b1df6d2454a4afa47b8738cced47b2f0,
         type: 3}
       propertyPath: m_havePropertiesChanged
@@ -481,16 +491,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CellSize.x
       value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 4914281460122613642, guid: b1df6d2454a4afa47b8738cced47b2f0,
-        type: 3}
-      propertyPath: m_Name
-      value: Level1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4914281460122613642, guid: b1df6d2454a4afa47b8738cced47b2f0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4914281460122613637, guid: b1df6d2454a4afa47b8738cced47b2f0,
         type: 3}
