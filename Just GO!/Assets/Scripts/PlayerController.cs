@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
     {
         if (hit.collider.tag == "Enemy")
         {
-            print("touched something OTHER than the ground");
+            //print("touched something OTHER than the ground");
             playerAnimator.SetTrigger("Die");
             movementSpeed = 0;
         }

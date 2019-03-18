@@ -12,7 +12,7 @@ public class BossController : MonoBehaviour
     public float attackWait;
     public float blastWait;
 
-    private int life = 10;
+    private int life = 100;
 
     public float minDist;
     public float touched;
@@ -35,7 +35,14 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(AttackBeak());
+        print(life);
+        if (life > 0)
+        {
+            StartCoroutine(AttackBeak());
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator AttackBeak()
@@ -53,9 +60,9 @@ public class BossController : MonoBehaviour
                 moveDirection.x = movementSpeed;
             }
 
-            if (Vector3.Distance(transform.position, player.position) > 2f)
+            if (transform.position.y > player.position.y)
             {
-                moveDirection.y -= gravity * Time.smoothDeltaTime;
+                moveDirection.y -= 1.25f *gravity * Time.smoothDeltaTime;
             }
             controller.Move(moveDirection * Time.smoothDeltaTime);
         } else
@@ -70,7 +77,7 @@ public class BossController : MonoBehaviour
             fallBack = false;
         }
         
-        Debug.Log(Vector3.Distance(transform.position, player.position));
+        //Debug.Log(Vector3.Distance(transform.position, player.position));
     }
 
     void MoveBoss()
@@ -84,7 +91,7 @@ public class BossController : MonoBehaviour
         moveDirection.x = movementSpeed * 1.4f;
         if (transform.position.y <= 3)
         {
-            moveDirection.y +=  1.2f * gravity * Time.smoothDeltaTime;
+            moveDirection.y +=  1.3f * gravity * Time.smoothDeltaTime;
         }
         controller.Move(moveDirection * Time.smoothDeltaTime);
     }
@@ -97,12 +104,31 @@ public class BossController : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Debug.Log(hit.collider.gameObject.tag);
-        if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Sword" || hit.collider.gameObject.tag == "Fireball")
+        if (hit.collider.gameObject.tag == "Player" || hit.collider.gameObject.tag == "Sword" || hit.collider.gameObject.tag == "Fireball" || hit.collider.gameObject.tag == "Ultimate")
         {
             fallBack = true;
+            life -= AttackedScore(hit);
         } else
         {
 
         }
+    }
+
+    private int AttackedScore(ControllerColliderHit hit)
+    {
+        int minusHP = 0;
+        if (hit.collider.gameObject.tag == "Sword")
+        {
+            minusHP = 10;
+        } else if (hit.collider.gameObject.tag == "Fireball")
+        {
+            Destroy(hit.collider.gameObject);
+            minusHP = 5;
+        } else if (hit.collider.gameObject.tag == "Ultimate")
+        {
+            minusHP = 20;
+        }
+
+        return minusHP;
     }
 }

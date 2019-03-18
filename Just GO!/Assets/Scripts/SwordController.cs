@@ -12,7 +12,7 @@ public class SwordController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        controller.detectCollisions = false;
+        //controller.detectCollisions = false;
     }
 
     // Update is called once per frame

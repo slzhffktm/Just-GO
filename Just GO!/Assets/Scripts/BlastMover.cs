@@ -28,13 +28,16 @@ public class BlastMover : MonoBehaviour
     {
         float step = speed * Time.deltaTime;
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.position.x, player.position.y - 2, 0), step);
-        
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("here");
-        Destroy(gameObject);
+        //Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "Sword" || collision.gameObject.tag == "Fireball" || collision.gameObject.tag == "Ultimate" || collision.gameObject.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnBecameInvisible()
