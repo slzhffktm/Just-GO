@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     
     public Transform sword;
 
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
         
         hasFireball = false;
         isUltimateCooldown = true;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -80,6 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection.y = jumpPower;
             jumpCount++;
+            audioSource.Play();
         }
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > nextSwordAttack)
         {
