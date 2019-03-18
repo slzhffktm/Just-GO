@@ -85,6 +85,15 @@ public class WinLoseController : MonoBehaviour
                 Debug.Log("create schema: " + result);
             }
         }
+
+        StartCoroutine(Wait());
+
+        SceneManager.LoadScene(1);
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(2f);
     }
 
     int GetUnlockedLevel()
