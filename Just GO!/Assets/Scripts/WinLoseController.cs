@@ -52,8 +52,6 @@ public class WinLoseController : MonoBehaviour
         {
             UpdateLevelUnlocked(currentLevel + 1);
         }
-
-        SceneManager.LoadScene(1);
     }
 
     void IsLose()
