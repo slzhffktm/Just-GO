@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: c52ae473ac442ec498855841097f3da0
+  - enabled: 1
+    path: Assets/Scenes/PlayerFreeRoom.unity
+    guid: b6a802645592dbb46b97bbc454f30a75
   m_configObjects: {}

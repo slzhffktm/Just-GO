@@ -2,7 +2,7 @@
 using Mono.Data.Sqlite;
 using UnityEngine;
 
-public class LevelLoader : MonoBehaviour
+public class LevelsRenderer : MonoBehaviour
 {
     private Transform levels;
 
