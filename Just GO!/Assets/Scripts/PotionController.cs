@@ -23,4 +23,12 @@ public class PotionController : MonoBehaviour
         moveDirection.y -= 50 * Time.smoothDeltaTime;
         controller.Move(moveDirection * Time.smoothDeltaTime);
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.collider.gameObject.tag == "Enemy")
+        {
+            Physics.IgnoreCollision(controller, hit.collider);
+        }
+    }
 }

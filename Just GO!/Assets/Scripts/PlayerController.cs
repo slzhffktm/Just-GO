@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
 
         moveDirection.y -= gravity * Time.smoothDeltaTime;
         controller.Move(moveDirection * Time.smoothDeltaTime);
+
     }
 
     private void Attack()
