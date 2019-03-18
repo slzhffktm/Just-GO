@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6271287374097377727}
   - component: {fileID: 6271287374097377726}
-  - component: {fileID: 872336382}
+  - component: {fileID: 863984546}
+  - component: {fileID: 640418936}
   m_Layer: 0
   m_Name: SwordAttack
   m_TagString: Sword
@@ -79,7 +80,20 @@ SpriteMask:
   m_BackSortingOrder: 0
   m_IsCustomRangeActive: 0
   m_SpriteSortPoint: 0
---- !u!143 &872336382
+--- !u!114 &863984546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6271287374097377724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6517355c2a0134d872abc684895ab4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 9
+--- !u!143 &640418936
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,10 +104,10 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.57
-  m_Radius: 1.09
+  m_Height: 2
+  m_Radius: 0.77
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.28, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
