@@ -26,7 +26,7 @@ public class PotionController : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.collider.gameObject.tag == "Enemy")
+        if (hit.collider.gameObject.tag == "Enemy" || hit.collider.gameObject.tag == "Fireball")
         {
             Physics.IgnoreCollision(controller, hit.collider);
         }
