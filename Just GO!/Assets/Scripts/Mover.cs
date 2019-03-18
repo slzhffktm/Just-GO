@@ -26,7 +26,7 @@ public class Mover : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         print("kena sesuatu");
-        if (hit.collider.gameObject.tag == "FireballPotion")
+        if (hit.collider.gameObject.tag == "FireballPotion" || hit.collider.gameObject.tag == "Ultimate")
         {
             print("kena potion");
             Physics.IgnoreCollision(GetComponent<Collider>(), hit.collider);
@@ -43,7 +43,11 @@ public class Mover : MonoBehaviour
             transform.rotation = lastRotation;
             rb.velocity = lastVelocity;
             Physics.IgnoreCollision(GetComponent<Collider>(), collision.collider);
+        } else if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
         }
+
     }
 }
 

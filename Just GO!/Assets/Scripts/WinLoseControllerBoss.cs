@@ -4,16 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class WinLoseController : MonoBehaviour
+public class WinLoseControllerBoss : MonoBehaviour
 {
     private string dbPath;
     private int playerId;
-    
-    public float surviveTime;
-    private float elapsedTime = 0;
-    public PlayerController player;
 
-    public Text timePassed;
+    public PlayerController player;
+    public BossController boss;
 
     // Start is called before the first frame update
     void Start()
@@ -24,14 +21,12 @@ public class WinLoseController : MonoBehaviour
 
     private void Update()
     {
-        elapsedTime += Time.deltaTime;
-        timePassed.text = (elapsedTime).ToString();
         if (player.alive == false)
         {
             IsLose();
             player.isWin = false;
         }
-        if (elapsedTime >= surviveTime)
+        if (boss.life <= 0)
         {
             IsWin();
             player.movementSpeed = 0;

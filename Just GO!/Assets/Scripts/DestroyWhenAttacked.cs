@@ -30,7 +30,7 @@ public class DestroyWhenAttacked : MonoBehaviour
             print(hit.collider.gameObject.tag);
             Destroy(gameObject);
         }
-        else if (hit.collider.gameObject.tag == "FireballPotion" || hit.collider.gameObject.tag == "Player")
+        else if (hit.collider.gameObject.tag == "FireballPotion" )
         {
             Physics.IgnoreCollision(controller, hit.collider);
         }
