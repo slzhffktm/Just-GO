@@ -48,7 +48,8 @@ public class LevelsRenderer : MonoBehaviour
                 var reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    level = reader.GetInt32(0);
+                    var id = reader.GetInt32(0);
+                    level = reader.GetInt32(1);
                 }
             }
         }
