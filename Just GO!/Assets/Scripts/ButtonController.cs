@@ -1,21 +1,24 @@
 ﻿using System.Data;
 using Mono.Data.Sqlite;
 using UnityEngine;
-using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace TMPro {
 
     public class ButtonController : MonoBehaviour
     {
         private string dbPath;
+
         private TextMeshProUGUI buttonText;
+        private int buttonId;
 
     // Start is called before the first frame update
     void Start()
         {
             dbPath = "URI=file:" + Application.persistentDataPath + "/playerDatabase.db";
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = GetProfile(int.Parse(buttonText.text));
+            buttonId = int.Parse(buttonText.text);
+            buttonText.text = GetProfile();
         }
 
         public void OnClick()
@@ -23,6 +26,10 @@ namespace TMPro {
             if (buttonText.text == "Empty")
             {
                 InsertNewProfile();
+            }
+            else
+            {
+                LoadProfile();
             }
         }
 
@@ -35,12 +42,12 @@ namespace TMPro {
                 {
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = "INSERT INTO profiles (level) " +
-                                      "VALUES (@Level);";
-
+                                      "VALUES (1) (id) VALUES (@Id);";
+                    
                     cmd.Parameters.Add(new SqliteParameter
                     {
-                        ParameterName = "Level",
-                        Value = 1
+                        ParameterName = "Id",
+                        Value = buttonId
                     });
 
                     var result = cmd.ExecuteNonQuery();
@@ -49,7 +56,15 @@ namespace TMPro {
             }
         }
 
-        string GetProfile(int id)
+        void LoadProfile()
+        {
+            PlayerPrefs.SetInt("id", buttonId);
+            PlayerPrefs.Save();
+
+            SceneManager.LoadScene(1);
+        }
+
+        string GetProfile()
         {
             string text = "Empty";
 
@@ -64,14 +79,14 @@ namespace TMPro {
                     cmd.Parameters.Add(new SqliteParameter
                     {
                         ParameterName = "Id",
-                        Value = id
+                        Value = buttonId
                     });
 
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
                         var level = reader.GetInt32(0);
-                        text = string.Format("{0}: Level {1}", id, level);
+                        text = string.Format("{0}: Level {1}", buttonId, level);
                         Debug.Log(text);
                     }
                 }
