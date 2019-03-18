@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossController : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class BossController : MonoBehaviour
     public Transform BlastSpawn;
     private float nextBlast = 0;
 
+    public Text bossHealthText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,14 @@ public class BossController : MonoBehaviour
     void Update()
     {
         print(life);
+        if (life > 0 )
+        {
+            bossHealthText.text = life.ToString();
+        } else
+        {
+            life = 0;
+            bossHealthText.text = life.ToString();
+        }
         if (life > 0)
         {
             StartCoroutine(AttackBeak());
