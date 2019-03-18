@@ -7476,7 +7476,7 @@ PrefabInstance:
     - target: {fileID: 3843775454028853897, guid: ec0aa417b40219042b3338280c459c1b,
         type: 3}
       propertyPath: surviveTime
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3843775454028853897, guid: ec0aa417b40219042b3338280c459c1b,
         type: 3}
@@ -8017,16 +8017,6 @@ PrefabInstance:
       propertyPath: imageCooldown
       value: 
       objectReference: {fileID: 1842107627}
-    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
-        type: 3}
-      propertyPath: UltimateDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
-        type: 3}
-      propertyPath: UltimateRate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 235167278647767727, guid: de91aa1026cec424d8444081ea82921e,
         type: 3}
       propertyPath: m_LocalPosition.x

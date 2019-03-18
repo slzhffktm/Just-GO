@@ -3585,7 +3585,7 @@ GameObject:
   - component: {fileID: 1031201542}
   m_Layer: 0
   m_Name: Endless 2D Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6941,7 +6941,7 @@ PrefabInstance:
     - target: {fileID: 3843775454028853897, guid: ec0aa417b40219042b3338280c459c1b,
         type: 3}
       propertyPath: surviveTime
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3843775454028853897, guid: ec0aa417b40219042b3338280c459c1b,
         type: 3}
@@ -7258,6 +7258,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
+        type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 2057879576}
+    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
+        type: 3}
+      propertyPath: imageCooldown
+      value: 
+      objectReference: {fileID: 1842107627}
+    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
+        type: 3}
+      propertyPath: UltimateDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
+        type: 3}
+      propertyPath: UltimateRate
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 235167278647767727, guid: de91aa1026cec424d8444081ea82921e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7312,26 +7332,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
-        type: 3}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 2057879576}
-    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
-        type: 3}
-      propertyPath: imageCooldown
-      value: 
-      objectReference: {fileID: 1842107627}
-    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
-        type: 3}
-      propertyPath: UltimateDuration
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 235167278647767724, guid: de91aa1026cec424d8444081ea82921e,
-        type: 3}
-      propertyPath: UltimateRate
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de91aa1026cec424d8444081ea82921e, type: 3}
