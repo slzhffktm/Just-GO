@@ -21,4 +21,12 @@ public class SwordController : MonoBehaviour
         moveDirection.x = movementSpeed;
         controller.Move(moveDirection * Time.smoothDeltaTime);
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.tag == "Enemy" && hit.gameObject.name != "Boss")
+        {
+            Destroy(hit.gameObject);
+        }
+    }
 }

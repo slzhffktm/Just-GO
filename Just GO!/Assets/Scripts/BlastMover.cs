@@ -8,27 +8,21 @@ public class BlastMover : MonoBehaviour
     public float speed;
     private Transform player;
 
+    private Vector3 movementVector = Vector3.zero;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
 
-        //if (player.position.x < transform.position.x)
-        //{
-        //    rb.velocity = -transform.right * speed;
-        //}
-        //else
-        //{
-        //    rb.velocity = transform.right * speed;
-        //}
-
+        movementVector = (new Vector3(player.position.x+8, player.position.y, player.position.z) - transform.position).normalized * speed;
     }
 
     private void Update()
     {
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.position.x, player.position.y - 2, 0), step);
-
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.position.x, player.position.y - 8, 0), step);
+        //transform.position += movementVector * Time.deltaTime;
     }
 
     private void OnCollisionEnter(Collision collision)

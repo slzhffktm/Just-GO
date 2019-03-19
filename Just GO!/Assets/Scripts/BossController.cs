@@ -65,7 +65,7 @@ public class BossController : MonoBehaviour
         {
             if (transform.position.x > player.position.x)
             {
-                moveDirection.x = -movementSpeed*1.4f;
+                moveDirection.x = -movementSpeed*1.3f;
             } else
             {
                 moveDirection.x = movementSpeed;
@@ -73,14 +73,14 @@ public class BossController : MonoBehaviour
 
             if (transform.position.y > player.position.y)
             {
-                moveDirection.y -= 1.25f *gravity * Time.smoothDeltaTime;
+                moveDirection.y -= 0.8f *gravity * Time.smoothDeltaTime;
             }
             controller.Move(moveDirection * Time.smoothDeltaTime);
         } else
         {
             MoveToOrigin();
             yield return new WaitForSeconds(4);
-            if (Time.time > nextBlast && transform.position.x - player.position.x >=8 )
+            if (Time.time > nextBlast && transform.position.x - player.position.x >=9 )
             {
                 AttackBeam();
                 nextBlast = Time.time + blastWait;
@@ -102,7 +102,7 @@ public class BossController : MonoBehaviour
         moveDirection.x = movementSpeed * 1.4f;
         if (transform.position.y <= 3)
         {
-            moveDirection.y +=  1.3f * gravity * Time.smoothDeltaTime;
+            moveDirection.y +=  1.4f * gravity * Time.smoothDeltaTime;
         }
         controller.Move(moveDirection * Time.smoothDeltaTime);
     }
@@ -119,13 +119,14 @@ public class BossController : MonoBehaviour
         {
             if (hit.collider.gameObject.tag == "Ultimate")
             {
+                controller.detectCollisions = !enabled;
                 Physics.IgnoreCollision(controller, hit.collider);
             }
             fallBack = true;
             life -= AttackedScore(hit);
         } else
         {
-
+            controller.detectCollisions = enabled;
         }
     }
 
