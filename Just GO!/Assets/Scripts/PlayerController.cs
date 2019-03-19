@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float gravity;
     public bool alive = true;
     public bool isWin = false;
+    public bool attackedByBoss = false;
 
     public float swordAttackRate;
     public float swordAttackDuration;
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     private void MovePlayer()
     {
-        if (Time.time > endOfUltimate && alive)
+        if (Time.time > endOfUltimate && alive && !attackedByBoss)
         {
             movementSpeed = 2;
         }
@@ -134,6 +135,13 @@ public class PlayerController : MonoBehaviour
         Destroy(clone, UltimateDuration);
     }
 
+    IEnumerator waitDie()
+    {
+        playerAnimator.SetTrigger("Die");
+        yield return new WaitForSeconds(3);
+        alive = false;
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         print(hit.collider.gameObject.tag);
@@ -142,10 +150,9 @@ public class PlayerController : MonoBehaviour
             if (hit.collider.gameObject.tag == "Enemy")
             {
                 print("touched something OTHER than the ground");
-                playerAnimator.SetTrigger("Die");
-                alive = false;
+                attackedByBoss = true;
                 movementSpeed = 0;
-                
+                StartCoroutine(waitDie());
             }
 
             if (hit.collider.gameObject.tag == "FireballPotion")
